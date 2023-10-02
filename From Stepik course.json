@@ -1,0 +1,388 @@
+{
+	"info": {
+		"_postman_id": "3f98b360-b8be-48ac-9196-86725da3497c",
+		"name": "Lesson_5",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29057756",
+		"_collection_link": "https://bold-shadow-460946.postman.co/workspace/9f323ac1-bacf-4d9d-a83c-d9bf449ddefe/collection/29057756-3f98b360-b8be-48ac-9196-86725da3497c?action=share&source=collection_link&creator=29057756"
+	},
+	"item": [
+		{
+			"name": "scripts variables global",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"//console.log(\"Does count exist? : \" + pm.globals.has(\"count\")); Смотрим, есть ли вообще такая?\r",
+							"//console.log(\"Does count2 exist? : \" + pm.globals.has(\"count2\"));\r",
+							"\r",
+							"\r",
+							"//pm.globals.get(\"count\"); Получаем значение из переменной\r",
+							"\r",
+							"//pm.globals.set(\"count\", 3); Присваиваем значение переменной\r",
+							"\r",
+							"//pm.globals.unset(\"count\"); Убираем переменную\r",
+							"//pm.globals.clear(); Убираем все переменные\r",
+							"\r",
+							"console.log(pm.globals.replaceIn(\"Global variable count = {{count}}\"));//Используя функцию replaceIn(), можно вернуть строку с подставленными в нее значениями переменных\r",
+							"console.log(\"Global variable count2 = \" + pm.globals.get(\"count2\"));\r",
+							"\r",
+							"pm.globals.set(\"count\", 3)\r",
+							"pm.globals.set(\"count2\", 3)\r",
+							"\r",
+							"console.log(pm.globals.replaceIn(\"Global variable count = {{count}}\"));\r",
+							"console.log(pm.globals.replaceIn(\"Global variable count2 = {{count2}}\"));\r",
+							"\r",
+							"pm.globals.unset(\"count2\")\r",
+							"console.log(\"Global variable count2 = \" + pm.globals.get(\"count2\"));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://postman-echo.com/get?param={{count}}",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "param",
+							"value": "{{count}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "scripts variables",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"//pm.collectionVariables.has(\"count\");\r",
+							"//pm.collectionVariables.get(\"count\");\r",
+							"//pm.collectionVariables.set(\"count\", 3);\r",
+							"//pm.collectionVariables.unset(\"count\");\r",
+							"//pm.collectionVariables.replaceIn(\"Count = {{count}}\");\r",
+							"//pm.collectionVariables.clear();\r",
+							"\r",
+							"//pm.environment.has(\"count\");\r",
+							"//pm.environment.get(\"count\");\r",
+							"//pm.environment.set(\"count\", 3);\r",
+							"//pm.environment.unset(\"count\");\r",
+							"//pm.environment.replaceIn(\"Count = {{count}}\");\r",
+							"//pm.environment.clear();\r",
+							"\r",
+							"//pm.iterationData.has(\"count\");\r",
+							"//pm.iterationData.get(\"count\");\r",
+							"//pm.iterationData.unset(\"count\");\r",
+							"\r",
+							"\r",
+							"console.log(\"(Global) count = \" + pm.globals.get(\"count\"))\r",
+							"console.log(\"(Collection) count = \" + pm.collectionVariables.get(\"count\"))\r",
+							"console.log(\"(Environment) count = \" + pm.environment.get(\"count\"))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://postman-echo.com/get?param={{count}}",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "param",
+							"value": "{{count}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "scripts variables local",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.log(\"(Local, before change) count = \" + pm.variables.get(\"count\"))\r",
+							"pm.variables.set(\"count\", 18);\r",
+							"console.log(\"(Local, after change) count = \" + pm.variables.get(\"count\"))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://postman-echo.com/get?param={{count}}",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "param",
+							"value": "{{count}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.log(pm.variables.get(\"timer\"));\r",
+							"\r",
+							"console.log(pm.environment.get(\"count\"));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://postman-echo.com/get?param={{count}}",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"get"
+					],
+					"query": [
+						{
+							"key": "param",
+							"value": "{{count}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pm.request",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"//console.log(\"Request method : \" + pm.request.method);\r",
+							"//console.log(\"Request url : \" + pm.request.url);\r",
+							"//console.log(\"Request headers : \" + pm.request.headers);\r",
+							"//console.log(\"Request body : \" + pm.request.body);\r",
+							"\r",
+							"pm.request.headers.add({\r",
+							"  key: \"custom-header3\",\r",
+							"  value: \"custom-value3\"\r",
+							"});\r",
+							"pm.request.headers.remove(\"custom-header1\");\r",
+							"pm.request.headers.upsert({\r",
+							"  key: \"custom-header2\",\r",
+							"  value: \"custom-value4\"\r",
+							"});\r",
+							"\r",
+							"console.log(\"Request headers : \" + pm.request.headers);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"var\": \"value\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://postman-echo.com/post",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Param",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.request.addQueryParams(\"param3=value3\");\r",
+							"pm.request.removeQueryParams(\"param1\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://postman-echo.com/post?param1=value1&param2=value2",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"post"
+					],
+					"query": [
+						{
+							"key": "param1",
+							"value": "value1"
+						},
+						{
+							"key": "param2",
+							"value": "value2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Task",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "response",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"console.log(\"Code: \" + pm.response.code);\r",
+							"console.log(\"Status: \" + pm.response.status);\r",
+							"console.log(\"Time: \" + pm.response.responseTime);\r",
+							"console.log(\"Size: \" + pm.response.responseSize);\r",
+							"console.log(\"Headers: \" + pm.response.headers);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://postman-echo.com/post?param1=value1&param2=value2",
+					"protocol": "https",
+					"host": [
+						"postman-echo",
+						"com"
+					],
+					"path": [
+						"post"
+					],
+					"query": [
+						{
+							"key": "param1",
+							"value": "value1"
+						},
+						{
+							"key": "param2",
+							"value": "value2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cookies",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "count",
+			"value": "5",
+			"type": "string"
+		},
+		{
+			"key": "timer",
+			"value": "5",
+			"type": "string"
+		}
+	]
+}
